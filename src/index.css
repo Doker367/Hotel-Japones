@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: #F5F5F5;
+  background-color: #0B0B0B;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 bg-white-soft text-dark-main font-zen text-sm tracking-wider
+    transition-all duration-500 hover:bg-gold-elegant hover:text-dark-main
+    hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gold-elegant;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 border-2 border-gold-elegant text-white-soft font-zen text-sm 
+    tracking-wider transition-all duration-500 hover:bg-gold-elegant hover:text-dark-main
+    hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gold-elegant;
+  }
+
+  .section-title {
+    @apply font-zen text-4xl md:text-5xl lg:text-6xl text-white-soft 
+    tracking-wide mb-6 text-center;
+  }
+
+  .section-subtitle {
+    @apply font-modern text-lg md:text-xl text-white-soft/70 text-center 
+    max-w-2xl mx-auto mb-12;
+  }
+
+  .card-hover {
+    @apply transition-all duration-700 hover:scale-[1.02] 
+    hover:shadow-[0_0_30px_rgba(201,162,77,0.3)];
+  }
+
+  .gold-frame {
+    @apply border border-gold-elegant/30 relative;
+  }
+
+  .gold-frame::before,
+  .gold-frame::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid;
+    border-color: #C9A24D;
+  }
+
+  .gold-frame::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .gold-frame::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+  }
+}
