@@ -12,24 +12,28 @@ const Hero = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Parallax muy sutil - solo en desktop
-  const yImage = useTransform(scrollY, [0, 500], [0, isMobile ? 0 : 80]);
-  const yText = useTransform(scrollY, [0, 500], [0, isMobile ? 0 : 120]);
+  // Parallax notorio - solo en desktop
+  const yImage = useTransform(scrollY, [0, 500], [0, isMobile ? 0 : 150]);
+  const yText = useTransform(scrollY, [0, 500], [0, isMobile ? 0 : 250]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Imagen de fondo oscura con parallax */}
+      {/* Video de fondo con parallax */}
       <motion.div
         style={{ y: yImage }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10"></div>
-        <img
-          src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=2094"
-          alt="Hotel Japonés Premium"
-          className="w-full h-full object-cover brightness-50"
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"></div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover brightness-75"
+        >
+          <source src="/img/147893-792811373.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
       {/* Marco dorado decorativo */}

@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 5;
   overflow: hidden;
   background: linear-gradient(180deg, #0B0B0B 0%, #111111 50%, #0B0B0B 100%);
 }
@@ -26,15 +26,15 @@
   font-family: 'Noto Serif JP', serif;
   font-weight: 300;
   color: #C9A24D;
-  opacity: 0.04;
+  opacity: 0.12;
   animation: kanjiFade 8s ease-in-out infinite alternate;
   user-select: none;
   pointer-events: none;
 }
 
 @keyframes kanjiFade {
-  0% { opacity: 0.03; }
-  100% { opacity: 0.06; }
+  0% { opacity: 0.08; }
+  100% { opacity: 0.15; }
 }
 
 /* Patrón japonés tradicional - Tema Oscuro */
@@ -44,24 +44,24 @@
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.015;
+  opacity: 0.04;
   background-image: 
-    radial-gradient(circle at 100% 50%, transparent 40%, rgba(201, 162, 77, 0.15) 40%, rgba(201, 162, 77, 0.15) 42%, transparent 42%),
-    radial-gradient(circle at 0% 50%, transparent 40%, rgba(201, 162, 77, 0.15) 40%, rgba(201, 162, 77, 0.15) 42%, transparent 42%);
+    radial-gradient(circle at 100% 50%, transparent 40%, rgba(201, 162, 77, 0.25) 40%, rgba(201, 162, 77, 0.25) 42%, transparent 42%),
+    radial-gradient(circle at 0% 50%, transparent 40%, rgba(201, 162, 77, 0.25) 40%, rgba(201, 162, 77, 0.25) 42%, transparent 42%);
   background-size: 80px 40px;
   background-position: 0 0, 40px 0;
 }
 
-/* Pétalos de sakura dorados - Reducidos y sutiles */
+/* Pétalos de sakura dorados - Visibles y elegantes */
 .sakura-petal-dark {
   position: absolute;
   top: -50px;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   pointer-events: none;
   animation: sakuraFallDark linear infinite, sakuraSwayDark ease-in-out infinite;
   will-change: transform, opacity;
-  filter: drop-shadow(0 0 3px rgba(201, 162, 77, 0.3));
+  filter: drop-shadow(0 0 8px rgba(201, 162, 77, 0.8)) drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
 }
 
 /* Animación de caída más lenta y solemne */
@@ -71,10 +71,10 @@
     opacity: 0;
   }
   10% {
-    opacity: 0.2;
+    opacity: 0.5;
   }
   90% {
-    opacity: 0.2;
+    opacity: 0.5;
   }
   100% {
     transform: translateY(calc(100vh + 50px)) translateX(80px) rotate(720deg);
