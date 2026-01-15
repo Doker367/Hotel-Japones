@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const fadeInUp = {
@@ -125,9 +126,9 @@ const Services = () => {
               Nuestro equipo está dedicado a anticipar cada necesidad. Desde la ceremonia del té 
               privada hasta excursiones culturales personalizadas, cada experiencia se adapta a sus deseos.
             </p>
-            <button className="btn-secondary">
-              Hablar con un Concierge
-            </button>
+            <Link to="/servicios" className="btn-secondary inline-block">
+              Ver Todos los Servicios
+            </Link>
           </div>
         </motion.div>
       </div>

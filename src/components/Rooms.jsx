@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Rooms = () => {
   const fadeInUp = {
@@ -109,9 +110,9 @@ const Rooms = () => {
           transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mt-16"
         >
-          <button className="btn-secondary">
+          <Link to="/habitaciones" className="btn-secondary inline-block">
             Ver todas las habitaciones
-          </button>
+          </Link>
         </motion.div>
       </div>
     </section>
