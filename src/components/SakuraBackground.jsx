@@ -6,9 +6,9 @@ const SakuraBackground = () => {
   const [kanjis, setKanjis] = useState([]);
 
   useEffect(() => {
-    // Generar pétalos de sakura - reducidos para tema oscuro
+    // Generar pétalos de sakura - aumentados para mejor visibilidad
     const generatePetals = () => {
-      const petalCount = window.innerWidth < 768 ? 8 : 15; // Menos pétalos
+      const petalCount = window.innerWidth < 768 ? 12 : 25; // Más pétalos
       const newPetals = [];
 
       for (let i = 0; i < petalCount; i++) {
@@ -16,10 +16,10 @@ const SakuraBackground = () => {
           id: i,
           left: Math.random() * 100,
           animationDelay: Math.random() * 20,
-          animationDuration: 15 + Math.random() * 10, // Más lentos
-          size: 0.4 + Math.random() * 0.5,
+          animationDuration: 12 + Math.random() * 8, // Un poco más rápidos
+          size: 0.6 + Math.random() * 0.6,
           rotation: Math.random() * 360,
-          opacity: 0.15 + Math.random() * 0.15, // Más sutiles
+          opacity: 0.3 + Math.random() * 0.25, // Más visibles
         });
       }
 
@@ -38,7 +38,7 @@ const SakuraBackground = () => {
           char: kanjiChars[Math.floor(Math.random() * kanjiChars.length)],
           left: 10 + Math.random() * 80,
           top: Math.random() * 100,
-          size: 120 + Math.random() * 180,
+          size: 180 + Math.random() * 220,
           animationDelay: Math.random() * 10,
         });
       }
@@ -101,11 +101,11 @@ const SakuraBackground = () => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M10 2C10 2 8 6 10 10C12 6 10 2 10 2Z" fill="#C9A24D" opacity="0.4"/>
-            <path d="M18 10C18 10 14 8 10 10C14 12 18 10 18 10Z" fill="#D4AF37" opacity="0.3"/>
-            <path d="M10 18C10 18 12 14 10 10C8 14 10 18 10 18Z" fill="#C9A24D" opacity="0.4"/>
-            <path d="M2 10C2 10 6 12 10 10C6 8 2 10 2 10Z" fill="#D4AF37" opacity="0.3"/>
-            <circle cx="10" cy="10" r="1.5" fill="#8B1E1E" opacity="0.5"/>
+            <path d="M10 2C10 2 8 6 10 10C12 6 10 2 10 2Z" fill="#C9A24D" opacity="0.9"/>
+            <path d="M18 10C18 10 14 8 10 10C14 12 18 10 18 10Z" fill="#D4AF37" opacity="0.8"/>
+            <path d="M10 18C10 18 12 14 10 10C8 14 10 18 10 18Z" fill="#C9A24D" opacity="0.9"/>
+            <path d="M2 10C2 10 6 12 10 10C6 8 2 10 2 10Z" fill="#D4AF37" opacity="0.8"/>
+            <circle cx="10" cy="10" r="1.5" fill="#8B1E1E" opacity="0.9"/>
           </svg>
         </div>
       ))}
