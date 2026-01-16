@@ -1,7 +1,13 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Experience = () => {
+  const { scrollY } = useScroll();
+  
+  // Efectos parallax
+  const yKanji = useTransform(scrollY, [300, 800], [0, -100]);
+  const opacityKanji = useTransform(scrollY, [300, 800], [0.1, 0.02]);
+  
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     whileInView: { opacity: 1, y: 0 },
@@ -35,7 +41,15 @@ const Experience = () => {
       {/* Separador dorado superior */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-gold-elegant to-transparent"></div>
       
-      <div className="max-w-7xl mx-auto">
+      {/* Kanji flotante con parallax */}
+      <motion.div 
+        style={{ y: yKanji, opacity: opacityKanji }}
+        className="absolute top-20 left-1/2 transform -translate-x-1/2 text-[20rem] font-zen text-gold-elegant pointer-events-none select-none"
+      >
+        心
+      </motion.div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div {...fadeInUp} className="text-center mb-20">
           {/* Decoración kanji */}
           <div className="text-6xl md:text-8xl text-gold-elegant/10 font-zen mb-4">心</div>

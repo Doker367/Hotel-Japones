@@ -6,10 +6,11 @@ import Hero from './components/Hero';
 import Experience from './components/Experience';
 import Rooms from './components/Rooms';
 import AllRooms from './components/AllRooms';
+import AllServices from './components/AllServices';
 import Services from './components/Services';
 import AllServices from './components/AllServices';
 import Gallery from './components/Gallery';
-import Booking from './components/Booking';
+import BookingSystem from './components/BookingSystem';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -61,6 +62,25 @@ const AllServicesPage = () => (
 );
 
 function App() {
+  const [currentView, setCurrentView] = useState('home'); // 'home', 'all-rooms', 'all-services'
+
+  useEffect(() => {
+    // Scroll to top cuando cambia la vista
+    window.scrollTo(0, 0);
+  }, [currentView]);
+
+  const handleShowAllRooms = () => {
+    setCurrentView('all-rooms');
+  };
+
+  const handleShowAllServices = () => {
+    setCurrentView('all-services');
+  };
+
+  const handleBackToHome = () => {
+    setCurrentView('home');
+  };
+
   return (
     <Router>
       <div className="relative min-h-screen bg-dark-main">

@@ -47,19 +47,12 @@ const AllRooms = () => {
             "Baño amplio con tina independiente",
             "Decoración de diseñador"
           ],
-          highlight: "Perfecta para parejas premium",
-          image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=2074"
-        }
-      ]
-    },
-    {
-      category: "Luxury Suites",
-      icon: "雅",
-      iconLabel: "Miyabi - Elegancia",
-      items: [
+          note: "Perfecta para parejas premium",
+          price: "Desde $500/noche"
+        },
         {
           name: "Luxury Suite",
-          description: "Suite de lujo con espacios separados",
+          image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=800",
           features: [
             "Dormitorio separado + sala",
             "Comedor pequeño o bar privado",

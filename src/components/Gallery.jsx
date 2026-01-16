@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const { scrollY } = useScroll();
+  
+  // Efectos parallax
+  const yBackground = useTransform(scrollY, [1500, 2500], [0, -150]);
+  const scaleKanji = useTransform(scrollY, [1500, 2500], [1, 1.2]);
 
   const images = [
     {
@@ -46,7 +51,15 @@ const Gallery = () => {
 
   return (
     <section className="relative py-32 px-6 bg-dark-main overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      {/* Kanji con parallax */}
+      <motion.div 
+        style={{ scale: scaleKanji }}
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[25rem] font-zen text-gold-elegant/5 pointer-events-none select-none"
+      >
+        美
+      </motion.div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div {...fadeInUp} className="text-center mb-20">
           <div className="text-6xl md:text-8xl text-red-deep/20 font-zen mb-4">美</div>
           <h2 className="section-title text-white-soft">Galería</h2>
