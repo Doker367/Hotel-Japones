@@ -8,7 +8,7 @@ import AllRooms from './components/AllRooms';
 import AllServices from './components/AllServices';
 import Services from './components/Services';
 import Gallery from './components/Gallery';
-import Booking from './components/Booking';
+import BookingSystem from './components/BookingSystem';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -65,7 +65,7 @@ function App() {
               </div>
               
               <div id="booking">
-                <Booking />
+                <BookingSystem />
               </div>
               
               <div id="contact">
