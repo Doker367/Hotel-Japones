@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SakuraBackground from './components/SakuraBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -7,10 +8,58 @@ import Rooms from './components/Rooms';
 import AllRooms from './components/AllRooms';
 import AllServices from './components/AllServices';
 import Services from './components/Services';
+import AllServices from './components/AllServices';
 import Gallery from './components/Gallery';
 import BookingSystem from './components/BookingSystem';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+
+// Página principal
+const HomePage = () => (
+  <>
+    <div id="hero">
+      <Hero />
+    </div>
+    
+    <div id="experience">
+      <Experience />
+    </div>
+    
+    <div id="rooms">
+      <Rooms />
+    </div>
+    
+    <div id="services">
+      <Services />
+    </div>
+    
+    <div id="gallery">
+      <Gallery />
+    </div>
+    
+    <div id="booking">
+      <Booking />
+    </div>
+    
+    <div id="contact">
+      <Contact />
+    </div>
+  </>
+);
+
+// Página de todas las habitaciones
+const AllRoomsPage = () => (
+  <>
+    <AllRooms />
+  </>
+);
+
+// Página de todos los servicios
+const AllServicesPage = () => (
+  <>
+    <AllServices />
+  </>
+);
 
 function App() {
   const [currentView, setCurrentView] = useState('home'); // 'home', 'all-rooms', 'all-services'
@@ -33,63 +82,27 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-dark-main">
-      {/* Fondo animado con sakura - presente en toda la página */}
-      <SakuraBackground />
+    <Router>
+      <div className="relative min-h-screen bg-dark-main">
+        {/* Fondo animado con sakura - presente en toda la página */}
+        <SakuraBackground />
 
-      {/* Contenido principal */}
-      <div className="relative z-10">
-        <Navbar onBackToHome={handleBackToHome} currentView={currentView} />
-        
-        <main>
-          {currentView === 'home' && (
-            <>
-              <div id="hero">
-                <Hero />
-              </div>
-              
-              <div id="experience">
-                <Experience />
-              </div>
-              
-              <div id="rooms">
-                <Rooms onShowAll={handleShowAllRooms} />
-              </div>
-              
-              <div id="services">
-                <Services onShowAll={handleShowAllServices} />
-              </div>
-              
-              <div id="gallery">
-                <Gallery />
-              </div>
-              
-              <div id="booking">
-                <BookingSystem />
-              </div>
-              
-              <div id="contact">
-                <Contact />
-              </div>
-            </>
-          )}
+        {/* Contenido principal */}
+        <div className="relative z-10">
+          <Navbar />
+          
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/habitaciones" element={<AllRoomsPage />} />
+              <Route path="/servicios" element={<AllServicesPage />} />
+            </Routes>
+          </main>
 
-          {currentView === 'all-rooms' && (
-            <div id="all-rooms">
-              <AllRooms onBackToHome={handleBackToHome} />
-            </div>
-          )}
-
-          {currentView === 'all-services' && (
-            <div id="all-services">
-              <AllServices onBackToHome={handleBackToHome} />
-            </div>
-          )}
-        </main>
-
-        <Footer />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
