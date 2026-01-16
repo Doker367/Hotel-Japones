@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Services = () => {
+const Services = ({ onShowAll }) => {
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     whileInView: { opacity: 1, y: 0 },
@@ -9,30 +9,30 @@ const Services = () => {
     transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
   };
 
-  const services = [
+  const serviceCategories = [
     {
-      title: 'Onsen Privado',
-      subtitle: '温泉',
-      description: 'Aguas termales naturales en un entorno de absoluta privacidad y serenidad.',
-      image: 'https://images.unsplash.com/photo-1583417267826-aebc4d1542e1?q=80&w=800'
+      title: 'Atención & Hospitalidad',
+      subtitle: 'おもてなし',
+      description: 'Recepción 24/7, concierge de lujo, servicio de mayordomo y atención personalizada que anticipa cada necesidad.',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800'
     },
     {
-      title: 'Spa Tradicional',
-      subtitle: 'スパ',
-      description: 'Tratamientos ancestrales japoneses que equilibran cuerpo, mente y espíritu.',
-      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800'
-    },
-    {
-      title: 'Restaurante Kaiseki',
-      subtitle: '懐石料理',
-      description: 'Alta cocina japonesa en formato kaiseki. Una experiencia gastronómica única.',
+      title: 'Gastronomía de Alto Nivel',
+      subtitle: '美食',
+      description: 'Restaurantes gourmet, chef estrella, rooftop bar, room service 24/7 y experiencias gastronómicas únicas.',
       image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=800'
     },
     {
-      title: 'Jardín Japonés',
-      subtitle: '日本庭園',
-      description: 'Pasee por nuestros jardines diseñados siguiendo los principios del paisajismo zen.',
-      image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=800'
+      title: 'Wellness & Spa',
+      subtitle: '癒し',
+      description: 'Spa de lujo, tratamientos ancestrales, circuito de hidroterapia, gimnasio premium y experiencias de bienestar.',
+      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800'
+    },
+    {
+      title: 'Albercas & Experiencias',
+      subtitle: 'リゾート',
+      description: 'Alberca infinity, swim-up bar, cabañas privadas, deportes acuáticos y experiencias eco-lujo exclusivas.',
+      image: 'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?q=80&w=800'
     }
   ];
 
@@ -50,7 +50,7 @@ const Services = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
+          {serviceCategories.map((service, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 60 }}
@@ -122,11 +122,11 @@ const Services = () => {
             </h3>
             <div className="w-20 h-px bg-gold-elegant mx-auto mb-6"></div>
             <p className="font-modern text-lg text-white-soft/80 leading-relaxed mb-8">
-              Nuestro equipo está dedicado a anticipar cada necesidad. Desde la ceremonia del té 
-              privada hasta excursiones culturales personalizadas, cada experiencia se adapta a sus deseos.
+              Descubre todos nuestros servicios premium. Desde atención personalizada hasta 
+              experiencias gastronómicas y de bienestar diseñadas para tu máximo confort.
             </p>
-            <button className="btn-secondary">
-              Hablar con un Concierge
+            <button onClick={onShowAll} className="btn-secondary">
+              Ver Todos los Servicios
             </button>
           </div>
         </motion.div>

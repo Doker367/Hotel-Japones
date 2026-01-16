@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
-const AllServices = () => {
+const AllServices = ({ onBackToHome }) => {
   const services = [
     {
       category: "Atención & Hospitalidad",
       icon: "心",
       iconLabel: "Kokoro - Corazón/Hospitalidad",
+      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800",
       services: [
         "Recepción 24/7 multilingüe",
         "Check-in / check-out express",
@@ -22,6 +22,7 @@ const AllServices = () => {
       category: "Albercas & Relax",
       icon: "泉",
       iconLabel: "Izumi - Manantial",
+      image: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?q=80&w=800",
       services: [
         "Alberca principal tipo infinity",
         "Alberca climatizada",
@@ -35,6 +36,7 @@ const AllServices = () => {
       category: "Playa & Naturaleza",
       icon: "浜",
       iconLabel: "Hama - Playa",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=800",
       services: [
         "Playa privada o zona exclusiva",
         "Camastros y sombrillas premium",
@@ -48,6 +50,7 @@ const AllServices = () => {
       category: "Restaurantes & Bares",
       icon: "味",
       iconLabel: "Aji - Sabor",
+      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800",
       services: [
         "Restaurante gourmet internacional",
         "Restaurante de autor / chef estrella",
@@ -62,6 +65,7 @@ const AllServices = () => {
       category: "Experiencias Gastronómicas",
       icon: "膳",
       iconLabel: "Zen - Banquete",
+      image: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=800",
       services: [
         "Room service 24/7",
         "Desayuno premium a la carta",
@@ -75,6 +79,7 @@ const AllServices = () => {
       category: "Spa & Relajación",
       icon: "癒",
       iconLabel: "Iyashi - Sanación",
+      image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800",
       services: [
         "Spa de lujo",
         "Cabinas de masaje privadas",
@@ -88,6 +93,7 @@ const AllServices = () => {
       category: "Fitness & Bienestar",
       icon: "健",
       iconLabel: "Ken - Salud",
+      image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800",
       services: [
         "Gimnasio de última generación",
         "Entrenador personal",
@@ -100,6 +106,7 @@ const AllServices = () => {
       category: "Entretenimiento",
       icon: "楽",
       iconLabel: "Raku - Disfrute",
+      image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=800",
       services: [
         "Música en vivo",
         "Shows nocturnos exclusivos",
@@ -113,6 +120,7 @@ const AllServices = () => {
       category: "Experiencias Premium",
       icon: "旅",
       iconLabel: "Tabi - Viaje",
+      image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800",
       services: [
         "Tours privados",
         "Experiencias VIP personalizadas",
@@ -125,6 +133,7 @@ const AllServices = () => {
       category: "Familias & Kids",
       icon: "家",
       iconLabel: "Ie - Familia",
+      image: "https://images.unsplash.com/photo-1476234251651-f353703a034d?q=80&w=800",
       services: [
         "Kids Club premium",
         "Guardería certificada",
@@ -138,6 +147,7 @@ const AllServices = () => {
       category: "Servicios en Habitaciones",
       icon: "館",
       iconLabel: "Kan - Edificio de lujo",
+      image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=800",
       services: [
         "Limpieza diaria premium",
         "Servicio de cortesía nocturna (turndown service)",
@@ -152,6 +162,7 @@ const AllServices = () => {
       category: "Negocios & Eventos",
       icon: "宴",
       iconLabel: "En - Banquete/Evento",
+      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800",
       services: [
         "Salones de eventos",
         "Salas de juntas",
@@ -166,6 +177,7 @@ const AllServices = () => {
       category: "Transporte & Accesos",
       icon: "道",
       iconLabel: "Dō - Camino",
+      image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800",
       services: [
         "Valet parking",
         "Estacionamiento privado",
@@ -179,6 +191,7 @@ const AllServices = () => {
       category: "Seguridad & Tecnología",
       icon: "守",
       iconLabel: "Mamoru - Protección",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800",
       services: [
         "Seguridad 24/7",
         "Accesos controlados",
@@ -193,6 +206,7 @@ const AllServices = () => {
       category: "Sustentabilidad & Lujo Responsable",
       icon: "緑",
       iconLabel: "Midori - Verde/Naturaleza",
+      image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=800",
       services: [
         "Programas ecológicos",
         "Uso de energías renovables",
@@ -205,6 +219,7 @@ const AllServices = () => {
       category: "Servicios Diferenciadores",
       icon: "誉",
       iconLabel: "Homare - Honor/Gloria",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800",
       services: [
         "Atención personalizada desde pre-llegada",
         "Perfilado de huéspedes (preferencias)",
@@ -259,7 +274,7 @@ const AllServices = () => {
               }}
               className="group relative backdrop-blur-xl bg-gradient-to-br from-graphite/50 via-dark-secondary/70 to-dark-main/40
                        border border-gold-elegant/20 hover:border-gold-elegant/50 
-                       transition-all duration-700 p-8
+                       transition-all duration-700 overflow-hidden
                        shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:shadow-[0_8px_32px_0_rgba(201,162,77,0.25)]
                        hover:scale-[1.02]"
             >
@@ -269,43 +284,47 @@ const AllServices = () => {
               
               {/* Decorative corners */}
               <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-gold-elegant/50 
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-gold-elegant/50 
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-gold-elegant/50 
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-gold-elegant/50 
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
 
-              {/* Icon kanji con estilo japonés */}
-              <div className="relative mb-6">
-                <div className="font-zen text-6xl text-gold-elegant group-hover:text-gold-premium 
-                              transition-all duration-500 group-hover:scale-110">
-                  {category.icon}
+              {/* Image con overlay */}
+              <div className="relative h-40 -mx-0 -mt-0 mb-6 overflow-hidden">
+                <img
+                  src={category.image}
+                  alt={category.category}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 brightness-75"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                <div className="absolute bottom-4 left-8 right-8 flex items-center gap-4">
+                  <div className="font-zen text-4xl text-gold-elegant">
+                    {category.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-zen text-xl text-white-soft mb-1 group-hover:text-gold-elegant 
+                                 transition-colors duration-300">
+                      {category.category}
+                    </h3>
+                    <p className="font-zen text-xs text-gold-elegant/60 tracking-wide">{category.iconLabel}</p>
+                  </div>
                 </div>
-                <div className="absolute -bottom-2 left-0 w-full h-px bg-gold-elegant/30"></div>
               </div>
 
-              {/* Category title */}
-              <div className="mb-6">
-                <h3 className="font-zen text-xl text-white-soft mb-1 group-hover:text-gold-elegant 
-                             transition-colors duration-300">
-                  {category.category}
-                </h3>
-                <p className="font-zen text-xs text-gold-elegant/60 tracking-wide">{category.iconLabel}</p>
+              <div className="px-8 pb-8">
+                {/* Services list */}
+                <ul className="space-y-3">
+                  {category.services.map((service, idx) => (
+                    <li key={idx} className="flex items-start gap-3 font-modern text-sm text-white-soft/80">
+                      <span className="text-gold-elegant mt-1 text-xs">✦</span>
+                      <span className="leading-relaxed">{service}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <div className="w-12 h-px bg-gold-elegant/50 mb-6"></div>
-
-              {/* Services list */}
-              <ul className="space-y-3">
-                {category.services.map((service, idx) => (
-                  <li key={idx} className="flex items-start gap-3 font-modern text-sm text-white-soft/80">
-                    <span className="text-gold-elegant mt-1 text-xs">✦</span>
-                    <span className="leading-relaxed">{service}</span>
-                  </li>
-                ))}
-              </ul>
             </motion.div>
           ))}
         </div>
@@ -327,20 +346,20 @@ const AllServices = () => {
             Reserva ahora y descubre la hospitalidad japonesa de nivel mundial.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/"
+            <button
+              onClick={onBackToHome}
               className="px-10 py-4 bg-gold-elegant text-dark-main font-zen tracking-widest 
                        hover:bg-gold-premium transition-all duration-300 shadow-lg hover:shadow-gold-elegant/50"
             >
-              Reservar Ahora
-            </Link>
-            <Link
-              to="/"
+              Regresar al Inicio
+            </button>
+            <button
+              onClick={onBackToHome}
               className="px-10 py-4 bg-transparent border border-gold-elegant/40 text-white-soft 
                        hover:bg-gold-elegant hover:text-dark-main transition-all duration-300 font-zen tracking-widest"
             >
-              Volver al Inicio
-            </Link>
+              Contáctanos
+            </button>
           </div>
         </motion.div>
       </div>
