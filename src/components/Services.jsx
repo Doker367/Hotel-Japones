@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Services = ({ onShowAll }) => {
   const fadeInUp = {
@@ -139,9 +140,9 @@ const Services = ({ onShowAll }) => {
               Descubre todos nuestros servicios premium. Desde atención personalizada hasta 
               experiencias gastronómicas y de bienestar diseñadas para tu máximo confort.
             </p>
-            <button onClick={onShowAll} className="btn-secondary">
+            <Link to="/servicios" className="btn-secondary inline-block">
               Ver Todos los Servicios
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>
