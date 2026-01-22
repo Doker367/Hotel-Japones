@@ -14,25 +14,29 @@ const Services = ({ onShowAll }) => {
       title: 'Atención & Hospitalidad',
       subtitle: 'おもてなし',
       description: 'Recepción 24/7, concierge de lujo, servicio de mayordomo y atención personalizada que anticipa cada necesidad.',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800'
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800',
+      features: ['Concierge 24/7', 'Mayordomo personal', 'Check-in privado', 'Asistencia multilingüe']
     },
     {
       title: 'Gastronomía de Alto Nivel',
       subtitle: '美食',
-      description: 'Restaurantes gourmet, chef estrella, rooftop bar, room service 24/7 y experiencias gastronómicas únicas.',
-      image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=800'
+      description: 'Restaurantes gourmet, chef estrella Michelin, rooftop bar, room service 24/7 y experiencias gastronómicas únicas.',
+      image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=800',
+      features: ['Chef Michelin', 'Menú Kaiseki', 'Bar rooftop', 'Room service premium']
     },
     {
       title: 'Wellness & Spa',
       subtitle: '癒し',
-      description: 'Spa de lujo, tratamientos ancestrales, circuito de hidroterapia, gimnasio premium y experiencias de bienestar.',
-      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800'
+      description: 'Spa de lujo, tratamientos ancestrales japoneses, circuito de hidroterapia, gimnasio premium y experiencias de bienestar.',
+      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800',
+      features: ['Onsen privado', 'Masajes Shiatsu', 'Yoga & meditación', 'Gimnasio 24h']
     },
     {
       title: 'Albercas & Experiencias',
       subtitle: 'リゾート',
-      description: 'Alberca infinity, swim-up bar, cabañas privadas, deportes acuáticos y experiencias eco-lujo exclusivas.',
-      image: 'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?q=80&w=800'
+      description: 'Alberca infinity con vista panorámica, swim-up bar, cabañas privadas, deportes acuáticos y experiencias eco-lujo.',
+      image: 'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?q=80&w=800',
+      features: ['Infinity pool', 'Cabañas privadas', 'Bar acuático', 'Terraza sunset']
     }
   ];
 
@@ -61,7 +65,7 @@ const Services = ({ onShowAll }) => {
                 delay: index * 0.15,
                 ease: [0.22, 1, 0.36, 1] 
               }}
-              className="group relative h-96 overflow-hidden card-hover"
+              className="group relative h-[500px] overflow-hidden card-hover"
             >
               {/* Imagen de fondo oscurecida */}
               <img
@@ -93,9 +97,19 @@ const Services = ({ onShowAll }) => {
                     {service.subtitle}
                   </p>
                   <div className="w-16 h-px bg-gold-elegant/70 mb-4"></div>
-                  <p className="font-modern text-base text-white-soft/90 leading-relaxed max-w-lg">
+                  <p className="font-modern text-base text-white-soft/90 leading-relaxed mb-6">
                     {service.description}
                   </p>
+                  
+                  {/* Lista de características */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-gold-elegant"></div>
+                        <span className="font-modern text-sm text-white-soft/80">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               </div>
             </motion.div>

@@ -4,10 +4,28 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Detectar sección activa
+      const sections = ['hero', 'experience', 'rooms', 'services', 'gallery', 'booking', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -15,14 +33,27 @@ const Navbar = () => {
   }, []);
 
   const menuItems = [
-    { name: 'Inicio', href: '#hero' },
-    { name: 'Experiencia', href: '#experience' },
-    { name: 'Habitaciones', href: '#rooms' },
-    { name: 'Servicios', href: '#services' },
-    { name: 'Galería', href: '#gallery' },
-    { name: 'Reservar', href: '#booking' },
-    { name: 'Contacto', href: '#contact' }
+    { name: 'Inicio', href: '#hero', id: 'hero' },
+    { name: 'Experiencia', href: '#experience', id: 'experience' },
+    { name: 'Habitaciones', href: '#rooms', id: 'rooms' },
+    { name: 'Servicios', href: '#services', id: 'services' },
+    { name: 'Galería', href: '#gallery', id: 'gallery' },
+    { name: 'Reservar', href: '#booking', id: 'booking' },
+    { name: 'Contacto', href: '#contact', id: 'contact' }
   ];
+
+  const smoothScrollTo = (e, targetId) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <motion.nav
@@ -38,7 +69,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#hero" className="flex flex-col items-start group">
+          <a 
+            href="#hero" 
+            onClick={(e) => smoothScrollTo(e, 'hero')}
+            className="flex flex-col items-start group"
+          >
             <span
               className={`font-zen text-3xl tracking-wider transition-colors duration-300 ${
                 isScrolled ? 'text-white-soft' : 'text-white-soft'
@@ -61,14 +96,19 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => smoothScrollTo(e, item.id)}
                 className={`font-zen text-sm tracking-wider transition-all duration-300 
                           hover:text-gold-elegant relative group ${
-                  isScrolled ? 'text-white-soft' : 'text-white-soft'
+                  activeSection === item.id 
+                    ? 'text-gold-elegant' 
+                    : isScrolled ? 'text-white-soft' : 'text-white-soft'
                 }`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold-elegant 
-                               transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute -bottom-1 left-0 h-px bg-gold-elegant 
+                               transition-all duration-300 ${
+                  activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
               </a>
             ))}
           </div>
@@ -117,11 +157,17 @@ const Navbar = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block font-zen text-lg text-white-soft hover:text-gold-elegant 
-                           transition-colors duration-300 tracking-wide"
+                  onClick={(e) => smoothScrollTo(e, item.id)}
+                  className={`block font-zen text-lg transition-colors duration-300 tracking-wide ${
+                    activeSection === item.id 
+                      ? 'text-gold-elegant' 
+                      : 'text-white-soft hover:text-gold-elegant'
+                  }`}
                 >
                   {item.name}
+                  {activeSection === item.id && (
+                    <span className="inline-block ml-2 text-gold-elegant">•</span>
+                  )}
                 </motion.a>
               ))}
             </div>
