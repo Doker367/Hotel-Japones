@@ -68,9 +68,36 @@ const Hero = () => {
             <p className="font-zen text-xl md:text-2xl text-gold-elegant mb-4 tracking-[0.5em] uppercase">
               Wa no Yado
             </p>
-            <p className="font-modern text-base md:text-lg text-white-soft/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-modern text-base md:text-lg text-white-soft/80 mb-8 max-w-2xl mx-auto leading-relaxed">
               La esencia del lujo japonés en la quietud de la noche
             </p>
+            
+            {/* Detalles adicionales del hotel */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12 mt-10">
+              <div className="bg-dark-main/60 backdrop-blur-sm border border-gold-elegant/20 p-6 hover:border-gold-elegant/50 transition-all duration-300">
+                <div className="text-3xl text-gold-elegant font-zen mb-2">禅</div>
+                <h3 className="font-zen text-lg text-white-soft mb-2 tracking-wide">Zen & Minimalismo</h3>
+                <p className="font-modern text-sm text-white-soft/70 leading-relaxed">
+                  Arquitectura tradicional japonesa fusionada con diseño contemporáneo de lujo
+                </p>
+              </div>
+              
+              <div className="bg-dark-main/60 backdrop-blur-sm border border-gold-elegant/20 p-6 hover:border-gold-elegant/50 transition-all duration-300">
+                <div className="text-3xl text-gold-elegant font-zen mb-2">癒</div>
+                <h3 className="font-zen text-lg text-white-soft mb-2 tracking-wide">Wellness Premium</h3>
+                <p className="font-modern text-sm text-white-soft/70 leading-relaxed">
+                  Spa de clase mundial, onsen privados y experiencias de bienestar personalizadas
+                </p>
+              </div>
+              
+              <div className="bg-dark-main/60 backdrop-blur-sm border border-gold-elegant/20 p-6 hover:border-gold-elegant/50 transition-all duration-300">
+                <div className="text-3xl text-gold-elegant font-zen mb-2">美</div>
+                <h3 className="font-zen text-lg text-white-soft mb-2 tracking-wide">Gastronomía Kaiseki</h3>
+                <p className="font-modern text-sm text-white-soft/70 leading-relaxed">
+                  Chef con estrella Michelin, cocina japonesa de autor y experiencias culinarias únicas
+                </p>
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -80,12 +107,12 @@ const Hero = () => {
           transition={{ duration: 1.2, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col sm:flex-row gap-6 relative z-10"
         >
-          <button className="btn-secondary group relative overflow-hidden">
+          <a href="#booking" className="btn-secondary group relative overflow-hidden">
             <span className="relative z-10">Reservar Estancia</span>
-          </button>
-          <button className="btn-secondary group border-white-soft/30 hover:border-gold-elegant">
+          </a>
+          <a href="#experience" className="btn-secondary group border-white-soft/30 hover:border-gold-elegant">
             <span className="relative z-10">Explorar Experiencias</span>
-          </button>
+          </a>
         </motion.div>
 
         {/* Indicador de scroll dorado */}

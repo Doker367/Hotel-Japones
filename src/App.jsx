@@ -5,14 +5,13 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Experience from './components/Experience';
 import Rooms from './components/Rooms';
-import AllRooms from './components/AllRooms';
-import AllServices from './components/AllServices';
-import Services from './components/Services';
-import AllServices from './components/AllServices';
 import Gallery from './components/Gallery';
 import BookingSystem from './components/BookingSystem';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AllRooms from './components/AllRooms';
+import AllServices from './components/AllServices';
+import Services from './components/Services';
 
 // Página principal
 const HomePage = () => (
