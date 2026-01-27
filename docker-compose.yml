@@ -1,7 +1,10 @@
 services:
   hotel-japones:
     build: .
-    ports:
-      - "8080:80"
     restart: unless-stopped
     container_name: hotel-japones
+    networks:
+        - web_proxy_network
+networks:
+    web_proxy_network:
+        external: true

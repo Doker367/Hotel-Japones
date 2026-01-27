@@ -1,25 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HashLink as Link } from 'react-router-hash-link';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
-      // Detectar sección activa
-      const sections = ['hero', 'experience', 'rooms', 'services', 'gallery', 'booking', 'contact'];
+
+      const sections = [
+        'hero',
+        'experience',
+        'rooms',
+        'services',
+        'gallery',
+        'booking',
+        'contact'
+      ];
+
       const scrollPosition = window.scrollY + 100;
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetBottom = offsetTop + element.offsetHeight;
-          
+
           if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
             setActiveSection(section);
             break;
@@ -32,7 +43,8 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = [
+  // Elementos del menú principal (para homepage)
+  const homeMenuItems = [
     { name: 'Inicio', href: '#hero', id: 'hero' },
     { name: 'Experiencia', href: '#experience', id: 'experience' },
     { name: 'Habitaciones', href: '#rooms', id: 'rooms' },
@@ -42,18 +54,12 @@ const Navbar = () => {
     { name: 'Contacto', href: '#contact', id: 'contact' }
   ];
 
-  const smoothScrollTo = (e, targetId) => {
-    e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offsetTop = element.offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
-    setIsMobileMenuOpen(false);
-  };
+  // Elementos para navegación entre páginas
+  const pageMenuItems = [
+    { name: 'Inicio', href: '/', isRoute: true },
+    { name: 'Habitaciones', href: '/habitaciones', isRoute: true },
+    { name: 'Servicios', href: '/servicios', isRoute: true },
+  ];
 
   return (
     <motion.nav
@@ -68,66 +74,83 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
+
           {/* Logo */}
-          <a 
-            href="#hero" 
-            onClick={(e) => smoothScrollTo(e, 'hero')}
+          <RouterLink
+            to="/"
             className="flex flex-col items-start group"
           >
-            <span
-              className={`font-zen text-3xl tracking-wider transition-colors duration-300 ${
-                isScrolled ? 'text-white-soft' : 'text-white-soft'
-              }`}
-            >
+            <span className="font-zen text-3xl tracking-wider text-white-soft">
               和の宿
             </span>
-            <span
-              className={`font-zen text-xs tracking-widest transition-colors duration-300 ${
-                isScrolled ? 'text-gold-elegant' : 'text-gold-elegant/80'
-              }`}
-            >
+            <span className="font-zen text-xs tracking-widest text-gold-elegant">
               WA NO YADO
             </span>
-          </a>
+          </RouterLink>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-8">
-            {menuItems.map((item) => (
-              <a
+            {/* Navegación entre páginas */}
+            {pageMenuItems.map((item) => (
+              <RouterLink
                 key={item.name}
-                href={item.href}
-                onClick={(e) => smoothScrollTo(e, item.id)}
-                className={`font-zen text-sm tracking-wider transition-all duration-300 
-                          hover:text-gold-elegant relative group ${
-                  activeSection === item.id 
-                    ? 'text-gold-elegant' 
-                    : isScrolled ? 'text-white-soft' : 'text-white-soft'
-                }`}
+                to={item.href}
+                className={`font-zen text-sm tracking-wider transition-all duration-300
+                  hover:text-gold-elegant relative group ${
+                    location.pathname === item.href
+                      ? 'text-gold-elegant'
+                      : 'text-white-soft'
+                  }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 h-px bg-gold-elegant 
-                               transition-all duration-300 ${
-                  activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
-              </a>
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-gold-elegant
+                    transition-all duration-300 ${
+                      location.pathname === item.href
+                        ? 'w-full'
+                        : 'w-0 group-hover:w-full'
+                    }`}
+                />
+              </RouterLink>
+            ))}
+
+            {/* Enlaces de sección solo en homepage */}
+            {location.pathname === '/' && homeMenuItems.slice(1).map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                smooth
+                className={`font-zen text-sm tracking-wider transition-all duration-300
+                  hover:text-gold-elegant relative group ${
+                    activeSection === item.id
+                      ? 'text-gold-elegant'
+                      : 'text-white-soft'
+                  }`}
+              >
+                {item.name}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-gold-elegant
+                    transition-all duration-300 ${
+                      activeSection === item.id
+                        ? 'w-full'
+                        : 'w-0 group-hover:w-full'
+                    }`}
+                />
+              </Link>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 transition-colors duration-300 ${
-              isScrolled ? 'text-white-soft' : 'text-white-soft'
-            }`}
+            className="lg:hidden p-2 text-white-soft"
           >
             <svg
               className="w-6 h-6"
               fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              stroke="currentColor"
               strokeWidth="2"
               viewBox="0 0 24 24"
-              stroke="currentColor"
             >
               {isMobileMenuOpen ? (
                 <path d="M6 18L18 6M6 6l12 12" />
@@ -150,25 +173,53 @@ const Navbar = () => {
             className="lg:hidden bg-dark-main/98 backdrop-blur-md border-t border-gold-elegant/20 mt-4"
           >
             <div className="px-6 py-8 space-y-4">
-              {menuItems.map((item, index) => (
-                <motion.a
+              {/* Navegación entre páginas en mobile */}
+              {pageMenuItems.map((item, index) => (
+                <motion.div
                   key={item.name}
-                  href={item.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  onClick={(e) => smoothScrollTo(e, item.id)}
-                  className={`block font-zen text-lg transition-colors duration-300 tracking-wide ${
-                    activeSection === item.id 
-                      ? 'text-gold-elegant' 
-                      : 'text-white-soft hover:text-gold-elegant'
-                  }`}
                 >
-                  {item.name}
-                  {activeSection === item.id && (
-                    <span className="inline-block ml-2 text-gold-elegant">•</span>
-                  )}
-                </motion.a>
+                  <RouterLink
+                    to={item.href}
+                    className={`block font-zen text-lg tracking-wide ${
+                      location.pathname === item.href
+                        ? 'text-gold-elegant'
+                        : 'text-white-soft hover:text-gold-elegant'
+                    }`}
+                  >
+                    {item.name}
+                    {location.pathname === item.href && (
+                      <span className="inline-block ml-2 text-gold-elegant">•</span>
+                    )}
+                  </RouterLink>
+                </motion.div>
+              ))}
+
+              {/* Enlaces de sección solo en homepage */}
+              {location.pathname === '/' && homeMenuItems.slice(1).map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (index + pageMenuItems.length) * 0.05 }}
+                >
+                  <Link
+                    to={item.href}
+                    smooth
+                    className={`block font-zen text-lg tracking-wide ${
+                      activeSection === item.id
+                        ? 'text-gold-elegant'
+                        : 'text-white-soft hover:text-gold-elegant'
+                    }`}
+                  >
+                    {item.name}
+                    {activeSection === item.id && (
+                      <span className="inline-block ml-2 text-gold-elegant">•</span>
+                    )}
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>
