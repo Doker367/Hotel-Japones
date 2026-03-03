@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-black text-cream font-sans;
+  }
+
+  ::selection {
+    @apply bg-dragon-red text-white;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply bg-dragon-red hover:bg-dragon-red-dark text-white px-6 py-3 
+           rounded-lg font-medium transition-all duration-300 transform 
+           hover:scale-105 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-gold text-gold hover:bg-gold 
+           hover:text-black px-6 py-3 rounded-lg font-medium 
+           transition-all duration-300;
+  }
+
+  .card-chinese {
+    @apply bg-charcoal/80 backdrop-blur-sm rounded-xl border border-gold/20 
+           shadow-xl overflow-hidden;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold via-yellow-300 to-gold bg-clip-text 
+           text-transparent;
+  }
+
+  .text-gradient-red {
+    @apply bg-gradient-to-r from-dragon-red via-red-400 to-dragon-red 
+           bg-clip-text text-transparent;
+  }
+
+  .parallax-section {
+    @apply relative overflow-hidden;
+  }
+
+  .pattern-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .divider-chinese {
+    @apply flex items-center justify-center gap-4 my-8;
+  }
+
+  .divider-chinese::before,
+  .divider-chinese::after {
+    content: '';
+    @apply h-px w-16 bg-gradient-to-r from-transparent via-gold to-transparent;
+  }
+
+  .divider-chinese span {
+    @apply text-gold text-2xl;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
