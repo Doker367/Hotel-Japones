@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ShoppingBag, ChefHat, Calendar } from 'lucide-react';
+import { Menu, X, ChefHat, Calendar } from 'lucide-react';
 
 const navLinks = [
   { name: 'Inicio', path: '/' },
@@ -116,14 +116,6 @@ export default function Navbar() {
               >
                 <Calendar size={16} />
                 Reservar
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/10 rounded-full border border-gold/20 transition-colors"
-              >
-                <ShoppingBag size={18} className="text-gold" />
               </motion.button>
 
               <button
