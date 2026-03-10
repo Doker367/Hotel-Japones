@@ -21,7 +21,7 @@ const galleryImages = [
   { id: '1', title: 'Sala Principal', description: 'Ambiente tradicional chino', image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80', category: 'ambiente' },
   { id: '2', title: 'Chef Preparando Dim Sum', description: 'Maestría culinaria', image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80', category: 'cocina' },
   { id: '3', title: 'Pato Pekinés', description: 'Nuestra especialidad', image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80', category: 'comida' },
-  { id: '4', title: 'Jardín Interior', description: 'Zen oriental', image: 'https://images.unsplash.com/photo-1545562083-c583d0894def?w=800&q=80', category: 'ambiente' },
+  { id: '4', title: 'Jardín Interior', description: 'Zen oriental', image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80', category: 'ambiente' },
   { id: '5', title: 'Bowl de Fideos', description: 'Arte culinario', image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80', category: 'comida' },
   { id: '6', title: 'Bar y Lounge', description: 'Área de entretenimiento', image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80', category: 'ambiente' },
   { id: '7', title: 'Té de Jasmine', description: 'Tradición milenaria', image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=80', category: 'comida' },
@@ -75,7 +75,7 @@ export default function Gallery() {
       <div className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black z-10" />
         <img
-          src="https://images.unsplash.com/photo-1545562083-c583d0894def?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1920&q=80"
           alt="Gallery"
           className="w-full h-full object-cover"
         />

@@ -9,6 +9,7 @@
   
   body {
     @apply bg-black text-cream font-sans;
+    overflow-x: hidden;
   }
 
   ::selection {

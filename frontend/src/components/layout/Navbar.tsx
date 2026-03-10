@@ -45,7 +45,7 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 overflow-x-hidden ${
           isScrolled
             ? 'bg-black/95 backdrop-blur-xl shadow-2xl shadow-dragon-red/20 py-2'
             : 'bg-transparent py-4'
@@ -144,7 +144,7 @@ export default function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden bg-black/98 backdrop-blur-xl border-t border-gold/10"
             >
-              <div className="container-custom py-6 space-y-2">
+              <div className="px-4 py-6 space-y-2 overflow-x-hidden">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.path}
@@ -154,7 +154,7 @@ export default function Navbar() {
                   >
                     <Link
                       to={link.path}
-                      className={`block py-3 px-4 rounded-lg text-lg font-medium transition-colors ${
+                      className={`block py-3 px-4 rounded-lg text-lg font-medium transition-colors whitespace-nowrap ${
                         location.pathname === link.path
                           ? 'bg-gradient-to-r from-dragon-red/20 to-transparent text-gold border-l-2 border-gold'
                           : 'text-cream/70 hover:bg-white/5 hover:text-cream'
