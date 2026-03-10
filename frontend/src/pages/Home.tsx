@@ -322,7 +322,7 @@ const HistoryPreviewSection = () => {
     <section className="py-24 bg-gradient-to-r from-charcoal via-black to-charcoal relative overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1545562083-c583d0894def?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1920&q=80"
           alt="Garden"
           className="w-full h-full object-cover opacity-20"
         />
