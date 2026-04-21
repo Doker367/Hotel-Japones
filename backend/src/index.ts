@@ -12,6 +12,7 @@ import contactRoutes from './routes/contact';
 dotenv.config();
 
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3001;
 
 app.use(helmet({
@@ -46,10 +47,26 @@ app.use('/api/', limiter);
 
 app.use((req, res, next) => {
   if (req.body) {
-    req.body = sanitizeHtml(req.body, {
-      allowedTags: [],
-      allowedAttributes: {},
-    });
+    if (Buffer.isBuffer(req.body)) {
+      req.body = sanitizeHtml(req.body.toString('utf8'), {
+        allowedTags: [],
+        allowedAttributes: {},
+      });
+    } else if (typeof req.body === 'string') {
+      req.body = sanitizeHtml(req.body, {
+        allowedTags: [],
+        allowedAttributes: {},
+      });
+    } else if (typeof req.body === 'object') {
+      for (const key in req.body) {
+        if (typeof req.body[key] === 'string') {
+          req.body[key] = sanitizeHtml(req.body[key], {
+            allowedTags: [],
+            allowedAttributes: {},
+          });
+        }
+      }
+    }
   }
   next();
 });
