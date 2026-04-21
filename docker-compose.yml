@@ -14,7 +14,7 @@ services:
       - RATE_LIMIT_MAX_REQUESTS=100
     restart: unless-stopped
 
-  frontend:
+  nginx:
     build:
       context: .
       dockerfile: Dockerfile
