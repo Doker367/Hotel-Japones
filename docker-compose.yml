@@ -1,10 +1,37 @@
 services:
-  hotel-japones:
-    build: .
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3012:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - CORS_ORIGIN=*
+      - JWT_SECRET=${JWT_SECRET:-greonkong-secret-change-in-production}
+      - RATE_LIMIT_WINDOW_MS=900000
+      - RATE_LIMIT_MAX_REQUESTS=100
     restart: unless-stopped
-    container_name: hotel-japones
-    networks:
-        - web_proxy_network
-networks:
-    web_proxy_network:
-        external: true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_public"
+      - "traefik.http.routers.chino-api.rule=PathPrefix(`/chino/api`)"
+      - "traefik.http.routers.chino-api.entrypoints=web"
+      - "traefik.http.services.chino-api.loadbalancer.server.port=3001"
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8092:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_public"
+      - "traefik.http.routers.chino.rule=PathPrefix(`/chino`)"
+      - "traefik.http.routers.chino.entrypoints=web"
+      - "traefik.http.services.chino.loadbalancer.server.port=80"
