@@ -1,0 +1,16 @@
+/* App styles - minimalista zen */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Suavizar scroll entre secciones */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimización de rendimiento para animaciones */
+.card-hover,
+.sakura-petal {
+  will-change: transform;
+}
