@@ -25,7 +25,7 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('/chino/api/reservations', {
+      const response = await fetch('/japones/api/reservations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
