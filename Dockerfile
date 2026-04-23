@@ -7,6 +7,6 @@ RUN npm run build
 
 FROM nginx:alpine
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
-COPY --from=frontend-builder /app/frontend/dist /usr/share/nginx/html
+COPY --from=frontend-builder /app/frontend/dist /usr/share/nginx/html/japones
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
