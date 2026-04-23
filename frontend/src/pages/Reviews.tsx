@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const reviews = [
   {
@@ -174,12 +175,12 @@ export default function Reviews() {
             <p className="text-cream/70 mb-8 max-w-xl mx-auto">
               Tu opinión nos importa. Comparte tu experiencia con nosotros y ayúdanos a mejorar continuamente.
             </p>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-block btn-primary"
             >
               Deja tu Reseña
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
