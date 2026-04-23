@@ -33,7 +33,7 @@ export default function Menu() {
   const fetchMenu = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/res-chino/api/menu?category=${activeCategory}`);
+      const response = await fetch(`/chino/api/menu?category=${activeCategory}`);
       const data = await response.json();
       setMenuItems(data);
     } catch (error) {

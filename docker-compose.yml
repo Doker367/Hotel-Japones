@@ -13,6 +13,12 @@ services:
       - RATE_LIMIT_WINDOW_MS=900000
       - RATE_LIMIT_MAX_REQUESTS=100
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_public"
+      - "traefik.http.routers.chino-api.rule=PathPrefix(`/chino/api`)"
+      - "traefik.http.routers.chino-api.entrypoints=web"
+      - "traefik.http.services.chino-api.loadbalancer.server.port=3001"
 
   nginx:
     build:
@@ -23,3 +29,9 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_public"
+      - "traefik.http.routers.chino.rule=PathPrefix(`/chino`)"
+      - "traefik.http.routers.chino.entrypoints=web"
+      - "traefik.http.services.chino.loadbalancer.server.port=80"

@@ -13,7 +13,7 @@ import Reviews from './pages/Reviews';
 
 function App() {
   return (
-    <Router basename="/res-chino">
+    <Router basename="/chino">
       <ScrollToTop />
       <div className="min-h-screen bg-black text-cream">
         <Intro />
